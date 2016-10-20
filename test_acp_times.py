@@ -2,7 +2,7 @@
 Nose Tests for project 4
 """
 
-from acp_times
+import acp_times
 
 #import arrow
 
