@@ -67,12 +67,11 @@ def _calc_times():
   distance = request.args.get('distance', 0, type=int)
   date = request.args.get('date', 0, type=str)
   time = request.args.get('time', 0, type=str)
-  date_time = date + ' ' + time
-  app.logger.debug(date_time)
-  #arrow.get('2013-05-05 12:30:45', 'YYYY-MM-DD HH:mm:ss')
- 
-  open_time = acp_times.open_time(km, distance, arrow.now().isoformat)
-  close_time = acp_times.close_time(km, distance, arrow.now().isoformat)
+  date_time = date + ' ' + time + '00' 
+  arrow_time = arrow.get(date_time, 'YYYY-MM-DD HH:mm:ss')
+  
+  open_time = acp_times.open_time(km, distance, arrow_time.isoformat)
+  close_time = acp_times.close_time(km, distance, arrow_time.isoformat)
   result={ "open": open_time, "close": close_time }
   return jsonify(result=result)
 

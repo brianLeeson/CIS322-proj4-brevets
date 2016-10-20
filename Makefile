@@ -1,5 +1,5 @@
 #
-# Project 3:  Vocabulary game with AJAX interaction
+# Project 4:  Brevet Stuff
 #
 # Gnu make and bash are required. 
 #

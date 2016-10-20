@@ -15,6 +15,10 @@ import arrow
 #  javadoc comments. 
 #
 
+BREVET_TABLE = [[200, 15, 34],[400, 15, 32],[600, 15, 30],\
+[1000, 11.428, 28],[1300, 13.333, 26]]
+
+
 
 def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
     """
@@ -29,6 +33,8 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
        An ISO 8601 format date string indicating the control open time.
        This will be in the same time zone as the brevet start time.
     """
+	
+	
     return arrow.now().isoformat()
 
 def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
