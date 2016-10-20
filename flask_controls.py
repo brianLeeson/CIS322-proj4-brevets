@@ -64,9 +64,11 @@ def _calc_times():
   """
   app.logger.debug("Got a JSON request");
   km = request.args.get('km', 0, type=int)
-  #FIXME: These probably aren't the right open and close times
-  open_time = acp_times.open_time(km, 200, arrow.now().isoformat)
-  close_time = acp_times.close_time(km, 200, arrow.now().isoformat)
+  distance = request.args.get('distance', 0, type=int)
+  # FIXME: These probably aren't the right open and close times
+  # THIS IS WHERE THE MATH AND LOGIC IS DONE
+  open_time = acp_times.open_time(km, distance, arrow.now().isoformat)
+  close_time = acp_times.close_time(km, distance, arrow.now().isoformat)
   result={ "open": open_time, "close": close_time }
   return jsonify(result=result)
 
@@ -83,6 +85,5 @@ else:
     # Running from cgi-bin or from gunicorn WSGI server, 
     # which makes the call to app.run.  Gunicorn may invoke more than
     # one instance for concurrent service.
-    #FIXME:  Debug cgi interface 
     app.debug=False
 

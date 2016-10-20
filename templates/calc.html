@@ -56,7 +56,7 @@
 <div class="row">
   <div class="col-md-4">
     <label>Distance</label>
-  <select name="distance" id="brevet_dist_km">
+  <select name="distance" id="brevet_dist_km"> <!-- This is the distance menu-->
     <option value="200">200km</option>
     <option value="300">300km</option>
     <option value="400">400km</option>
@@ -87,7 +87,7 @@
 	<th>Close</th>
 	<th>Notes</th>
       </tr>
-   {% for row in range(20) %}
+   {% for row in range(10) %}
     <tr class="control">
       <!-- Dist (mi) -->
       <td><input name="miles" type="number" 
@@ -126,8 +126,9 @@
     var km = control.find("input[name='km']").val();
     var open_time_field = control.find("input[name='open']");
     var close_time_field = control.find("input[name='close']");
+	var distance = $("#brevet_dist_km").val();
     
-    $.getJSON(TIME_CALC_URL, { km: km }, 
+    $.getJSON(TIME_CALC_URL, { km: km , distance: distance}, 
       // response handler
       function(data) {
          var times = data.result;
