@@ -65,8 +65,8 @@ def _calc_times():
   app.logger.debug("Got a JSON request");
   km = request.args.get('km', 0, type=int)
   distance = request.args.get('distance', 0, type=int)
-  date = request.args.get('date', 0, type=int)
-  time = request.args.get('time', 0, type=int)
+  date = request.args.get('date', 0, type=str)
+  time = request.args.get('time', 0, type=str)
   date_time = date + ' ' + time
   print (date_time)
   #arrow.get('2013-05-05 12:30:45', 'YYYY-MM-DD HH:mm:ss')
