@@ -68,7 +68,7 @@ def _calc_times():
   date = request.args.get('date', 0, type=str)
   time = request.args.get('time', 0, type=str)
   date_time = date + ' ' + time
-  print (date_time)
+  app.logger.debug(date_time)
   #arrow.get('2013-05-05 12:30:45', 'YYYY-MM-DD HH:mm:ss')
  
   open_time = acp_times.open_time(km, distance, arrow.now().isoformat)
