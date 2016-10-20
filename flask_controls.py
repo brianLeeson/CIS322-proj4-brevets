@@ -65,8 +65,12 @@ def _calc_times():
   app.logger.debug("Got a JSON request");
   km = request.args.get('km', 0, type=int)
   distance = request.args.get('distance', 0, type=int)
-  # FIXME: These probably aren't the right open and close times
-  # THIS IS WHERE THE MATH AND LOGIC IS DONE
+  date = request.args.get('date', 0, type=int)
+  time = request.args.get('time', 0, type=int)
+  date_time = date + ' ' + time
+  print (date_time)
+  #arrow.get('2013-05-05 12:30:45', 'YYYY-MM-DD HH:mm:ss')
+ 
   open_time = acp_times.open_time(km, distance, arrow.now().isoformat)
   close_time = acp_times.close_time(km, distance, arrow.now().isoformat)
   result={ "open": open_time, "close": close_time }

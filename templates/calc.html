@@ -66,6 +66,7 @@
   </div> <!-- columns 1--4  -->
   <div class="col-md-6">
     <label>Begins at</label>
+	<!-- This is the date/time menu-->
     <input type=date name="begin_date" id="begin_date" value="2017-01-01" />
     <input type=time name="begin_time" id="begin_time" value="00:00"    />
   </div> <!-- columns 5-10 -->
@@ -127,8 +128,10 @@
     var open_time_field = control.find("input[name='open']");
     var close_time_field = control.find("input[name='close']");
 	var distance = $("#brevet_dist_km").val();
+	var date = $("#begin_date").val();
+	var time = $("#begin_time").val();
     
-    $.getJSON(TIME_CALC_URL, { km: km , distance: distance}, 
+    $.getJSON(TIME_CALC_URL, { km: km , distance: distance, date: date, time: time}, 
       // response handler
       function(data) {
          var times = data.result;
