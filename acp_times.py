@@ -35,7 +35,7 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 	   This will be in the same time zone as the brevet start time.
 	"""
 	brevet_list = [(200,15,34),(400,15,32),(600,15,30),(1000,11.428,28),(1300,13.333,26)]
-	done = false
+	done = False
 	
 	dt = 0
 	i = 0
@@ -56,8 +56,14 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 			dt += prev
 
 	print('time in hours:', time)
+	min = time % 1
+	hr = time - min
+	min = round(min * 60) 
 	
-	return brevet_start_time.replace(hours =+ time).isoformat()
+	brevet_start_time = brevet_start_time.replace(hours =+ hr)
+	brevet_start_time = brevet_start_time.replace(minutes =+ min)
+	
+	return brevet_start_time.isoformat()
 
 def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 	"""
