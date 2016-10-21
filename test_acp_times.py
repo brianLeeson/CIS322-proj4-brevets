@@ -9,10 +9,6 @@ import os
 # data_base [dist(km), 
 # [[control(km), oTime(min), cTime(min)],...], 
 # ISO_START]
-data_base = [200, /
-[[60, 106, 240], [120, 212, 480], [175, 309, 700], [205, 353, 800]], /
-ISO_START]
-
 
 #ISO format: YYYY-MM-DD HH:mm:ss
 ISO_START = '2017-01-01 00:00:00'
@@ -95,6 +91,3 @@ def test_web_files():
 			close = arrow.get(closes[i], 'YYYY/MM/DD HH:mm').isoformat()
 			assert open_time(dist[i], control[i], start_time) == close
 		
-
-	
-	#Example 3
