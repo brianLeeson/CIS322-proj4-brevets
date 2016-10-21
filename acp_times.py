@@ -15,6 +15,7 @@ import arrow
 #  javadoc comments. 
 #
 
+#List of lists.
 BREVET_TABLE = [[200, 15, 34],[400, 15, 32],[600, 15, 30],\
 [1000, 11.428, 28],[1300, 13.333, 26]]
 
