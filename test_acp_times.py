@@ -29,7 +29,7 @@ def process():
 	processes everything in the test folder into value dictionary
 	stores value in global TEST_DICT. key is filename.
 	'''
-	for filename in os.listdir(". /tests"):
+	for filename in os.listdir("tests"):
 		value = {}
 		
 		with open(filename, 'r') as f:
