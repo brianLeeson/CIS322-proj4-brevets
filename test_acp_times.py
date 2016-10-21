@@ -77,6 +77,9 @@ def test_web_files():
 	process()
 	
 	for filename in TEST_DICT:
+		#for testing
+		print(value)
+		
 		value = TEST_DICT[filename]
 		
 		dist = value['dist']
@@ -86,8 +89,7 @@ def test_web_files():
 		
 		start_time = opens[0]
 		
-		#for testing
-		print(value)
+
 		
 		for i in range(1, len(controls)):
 			open = arrow.get(opens[i], 'YYYY/MM/DD HH:mm').isoformat()
