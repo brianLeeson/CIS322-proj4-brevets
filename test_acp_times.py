@@ -50,9 +50,9 @@ def process():
 				line.split()
 				if isinstance(line[0][0], int):
 					value['controls'].append(line[0].split('km')[0])
-					value['opens'].append(YEAR + '/' + line[2] + ' ' + line[3]
+					value['opens'].append(YEAR + '/' + line[2] + ' ' + line[3])
 				else:
-					value['closes'].append(YEAR + '/' + line[1] + ' ' + line[2]
+					value['closes'].append(YEAR + '/' + line[1] + ' ' + line[2])
 			
 		TEST_DICT[fileneame] = value
 		
@@ -83,6 +83,9 @@ def test_web_files():
 		closes = value['closes']
 		
 		start_time = opens[0]
+		
+		#for testing
+		print(value)
 		
 		for i in range(1, len(controls)):
 			open = arrow.get(opens[i], 'YYYY/MM/DD HH:mm').isoformat()
