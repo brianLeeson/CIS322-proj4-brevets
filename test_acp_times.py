@@ -13,7 +13,7 @@ import os
 #ISO format: YYYY-MM-DD HH:mm:ss
 ISO_START = '2017-01-01 00:00:00'
 #year is 2016 by default
-YEAR = 2016
+YEAR = '2016'
 '''
 TEST_DICT =  {filename:{dist: 200, \
 						controls: [1,2, i]
