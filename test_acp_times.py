@@ -56,7 +56,7 @@ def process():
 				else:
 					value['closes'].append(YEAR + '/' + line[1] + ' ' + line[2])
 			
-		TEST_DICT[fileneame] = value
+		TEST_DICT[filename] = value
 		
 		
 def test_web_example1(data_base):
