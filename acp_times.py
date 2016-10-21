@@ -63,7 +63,7 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 	bst = bst.replace(hours =+ hr)
 	bst = bst.replace(minutes =+ min)
 	
-	return brevet_start_time.isoformat()
+	return bst.isoformat()
 
 def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 	"""
