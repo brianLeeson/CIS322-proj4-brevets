@@ -94,8 +94,8 @@ def test_web_files():
 		
 		for i in range(1, len(controls)):
 			open = arrow.get(opens[i], 'YYYY/MM/DD HH:mm').isoformat()
-			assert open_time(dist[i], control[i], start_time) == open
+			assert open_time(dist[i], controls[i], start_time) == open
 			
 			close = arrow.get(closes[i], 'YYYY/MM/DD HH:mm').isoformat()
-			assert open_time(dist[i], control[i], start_time) == close
+			assert open_time(dist[i], controls[i], start_time) == close
 		
