@@ -22,18 +22,18 @@ BREVET_TABLE = [[200, 15, 34],[400, 15, 32],[600, 15, 30],\
 
 
 def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
-    """
-    Args:
-       control_dist_km:  number, the control distance in kilometers
-       brevet_dist_km: number, the nominal distance of the brevet in kilometers,
-           which must be one of 200, 300, 400, 600, or 1000 (the only official
-           ACP brevet distances)
-       brevet_start_time:  An ISO 8601 format date-time string indicating
-           the official start time of the brevet
-    Returns:
-       An ISO 8601 format date string indicating the control open time.
-       This will be in the same time zone as the brevet start time.
-    """
+	"""
+	Args:
+	   control_dist_km:  number, the control distance in kilometers
+	   brevet_dist_km: number, the nominal distance of the brevet in kilometers,
+		   which must be one of 200, 300, 400, 600, or 1000 (the only official
+		   ACP brevet distances)
+	   brevet_start_time:  An ISO 8601 format date-time string indicating
+		   the official start time of the brevet
+	Returns:
+	   An ISO 8601 format date string indicating the control open time.
+	   This will be in the same time zone as the brevet start time.
+	"""
 	brevet_list = [(200,15,34),(400,15,32),(600,15,30),(1000,11.428,28),(1300,13.333,26)]
 	done = false
 	
@@ -57,21 +57,21 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 
 	print('time in hours:', time)
 	
-    return brevet_start_time.replace(hours =+ time).isoformat()
+	return brevet_start_time.replace(hours =+ time).isoformat()
 
 def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
-    """
-    Args:
-       control_dist_km:  number, the control distance in kilometers
-       brevet_dist_km: number, the nominal distance of the brevet in kilometers,
-           which must be one of 200, 300, 400, 600, or 1000 (the only official
-           ACP brevet distances)
-       brevet_start_time:  An ISO 8601 format date-time string indicating
-           the official start time of the brevet
-    Returns:
-       An ISO 8601 format date string indicating the control close time.
-       This will be in the same time zone as the brevet start time.
-    """
-    return arrow.now().isoformat()
+	"""
+	Args:
+	   control_dist_km:  number, the control distance in kilometers
+	   brevet_dist_km: number, the nominal distance of the brevet in kilometers,
+		   which must be one of 200, 300, 400, 600, or 1000 (the only official
+		   ACP brevet distances)
+	   brevet_start_time:  An ISO 8601 format date-time string indicating
+		   the official start time of the brevet
+	Returns:
+	   An ISO 8601 format date string indicating the control close time.
+	   This will be in the same time zone as the brevet start time.
+	"""
+	return arrow.now().isoformat()
 
 
