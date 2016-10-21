@@ -31,6 +31,7 @@ def process():
 	'''
 	for filename in os.listdir("tests"):
 		value = {}
+		filename = filename.split('.')[0]
 		
 		with open(filename, 'r') as f:
 			for i in range(6):
