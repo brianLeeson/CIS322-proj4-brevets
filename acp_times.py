@@ -53,7 +53,7 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 			prev = B_TABLE[i][0] - prev
 			time += prev/B_TABLE[i][2]
 			i += 1
-			control -+ prev
+			control -= prev
 			dt += prev
 
 	print('time in hours:', time)
