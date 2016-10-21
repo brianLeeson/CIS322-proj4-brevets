@@ -44,7 +44,7 @@ def process():
 		value['closes'] = []
 		
 		for i in range(3, len(read_data)):
-			line = len(read_data[i].strip
+			line = len(read_data[i].strip()
 			#if it has a length
 			if (len(line) and (line[0] != '<')):
 				line.split()
