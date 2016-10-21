@@ -83,7 +83,7 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 	   This will be in the same time zone as the brevet start time.
 	"""
 	
-	if (control_dist_km >= MAX_TIME[brevet_dist_km]):
+	if (control_dist_km >= brevet_dist_km):
 		min = MAX_TIME[brevet_dist_km][1]
 		hr = MAX_TIME[brevet_dist_km][0]
 	 
