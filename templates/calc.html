@@ -137,8 +137,8 @@
          var times = data.result;
          console.log("Got a response: " +  times);
          console.log("Response.open = " + times.open);
-         open_time_field.val( moment(times.open).format("ddd M/D H:mm"));
-         close_time_field.val( moment(times.close).format("ddd M/D H:mm"));
+         open_time_field.val( moment.utc(times.open).format("ddd M/D H:mm"));
+         close_time_field.val( moment.utc(times.close).format("ddd M/D H:mm"));
        } // end of handler function
      );// End of getJSON
     }
