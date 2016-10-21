@@ -76,11 +76,11 @@ def test_web_example1(data_base):
 def test_web_files():
 	process()
 	
-	for filename in TEST_DICT:
+	for filename in TEST_DICT:		
+		value = TEST_DICT[filename]
+		
 		#for testing
 		print(value)
-		
-		value = TEST_DICT[filename]
 		
 		dist = value['dist']
 		controls = value['controls']
