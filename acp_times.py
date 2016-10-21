@@ -59,9 +59,9 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 	min = time % 1
 	hr = time - min
 	min = round(min * 60) 
-	
-	brevet_start_time = brevet_start_time.replace(hours =+ hr)
-	brevet_start_time = brevet_start_time.replace(minutes =+ min)
+	bst = arrow.get(brevet_start_time)
+	bst = bst.replace(hours =+ hr)
+	bst = bst.replace(minutes =+ min)
 	
 	return brevet_start_time.isoformat()
 
