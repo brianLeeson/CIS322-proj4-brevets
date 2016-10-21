@@ -43,7 +43,7 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 	prev = 0
 	control = control_dist_km
 	
-	While(!done):
+	while(not done):
 	
 		if (dt + control) <= brevet_list[i][0]:
 			time += control / brevet_list[i][2]
