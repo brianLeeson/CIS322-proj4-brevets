@@ -40,7 +40,7 @@ def process():
 			read_data = f.readlines()
 
 		#Get the brevet dist. Stores in dict.
-		value['dis'] = read_data[0].split('>')[6].split('km')[0]
+		value['dist'] = read_data[0].split('>')[6].split('km')[0]
 		value['controls'] = []
 		value['opens'] = []
 		value['closes'] = []
