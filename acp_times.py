@@ -87,11 +87,11 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 	prev = 0
 	control = control_dist_km
 	
-	while(not done):
+	while(dt < brevet_dist_km):
 	
 		if (dt + control) <= B_TABLE[i][0]:
 			time += control / B_TABLE[i][1]
-			done = True
+			break
 		else:
 			prev = B_TABLE[i][0] - prev
 			time += prev/B_TABLE[i][1]
@@ -108,9 +108,5 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 	bst = bst.replace(minutes =+ min)
 	
 	return bst.isoformat()
-	
-	
-	
-	return arrow.now().isoformat()
 
 
