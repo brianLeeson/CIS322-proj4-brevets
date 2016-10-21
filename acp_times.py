@@ -19,8 +19,9 @@ import arrow
 BREVET_TABLE = [[200, 15, 34],[400, 15, 32],[600, 15, 30],\
 [1000, 11.428, 28],[1300, 13.333, 26]]
 
-B_TABLE = [(200,15,34),(400,15,32),(600,15,30),(1000,11.428,28),(1300,13.333,26)]
+MAX_TIME = {200:[13, 30], 300: [20, 00], 400: [27, 00], 600: [40, 00], 1000: [75, 00]}
 
+B_TABLE = [(200,15,34),(400,15,32),(600,15,30),(1000,11.428,28),(1300,13.333,26)]
 
 def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 	"""
@@ -35,9 +36,11 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 	   An ISO 8601 format date string indicating the control open time.
 	   This will be in the same time zone as the brevet start time.
 	"""
-
-	done = False
 	
+	if (brevet_dist_km <= control_dist_km):
+		control_dist_km = brevet_dist_km
+	
+	done = False
 	dt = 0
 	i = 0
 	time = 0
@@ -79,6 +82,17 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 	   An ISO 8601 format date string indicating the control close time.
 	   This will be in the same time zone as the brevet start time.
 	"""
+	
+	if (control_dist_km >= MAX_TIME[brevet_dist_km]):
+		min = MAX_TIME[brevet_dist_km][1]
+		hr = MAX_TIME[brevet_dist_km][0]
+	 
+		bst = arrow.get(brevet_start_time)
+		bst = bst.replace(hours =+ hr)
+		bst = bst.replace(minutes =+ min)
+	
+		return bst.isoformat()
+	
 	done = False
 	
 	dt = 0
@@ -88,8 +102,6 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 	control = control_dist_km
 	
 	while(not done):
-		if dt > brevet_dist_km:
-			done = True			
 		elif (dt + control) <= B_TABLE[i][0]:
 			time += control / B_TABLE[i][1]
 			done = True
