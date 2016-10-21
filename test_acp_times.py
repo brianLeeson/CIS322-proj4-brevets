@@ -63,6 +63,7 @@ def process():
 def test_web_example1():
 	#Example 1
 	#just in case
+	'''
 	assert open_time(60, 200, ISO_START) == '2017-01-01 01:46:00'
 	assert open_time(120, 200, ISO_START) == '2017-01-01 03:32:00'
 	assert open_time(175, 200, ISO_START) == '2017-01-01 05:09:00'
@@ -72,6 +73,7 @@ def test_web_example1():
 	assert close_time(120, 200, ISO_START) == '2017-01-01 08:00:00'
 	assert close_time(175, 200, ISO_START) == '2017-01-01 011:40:00'
 	assert close_time(205, 200, ISO_START) == '2017-01-01 013:30:00'
+	'''
 
 	
 def test_web_files():
@@ -100,4 +102,5 @@ def test_web_files():
 			close = arrow.get(closes[i], 'YYYY/MM/DD HH:mm').isoformat()
 			#assert open_time(dist[i], controls[i], start_time) == close
 			print(open_time(dist, controls[i], start_time) == close)
-		
+			
+test_web_files()
