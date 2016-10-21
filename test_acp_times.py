@@ -49,7 +49,7 @@ def process():
 			line = read_data[i].strip()
 			#if it has a length and it doesn't start with '<'
 			if (len(line) and (line[0] != '<')):
-				line.split()
+				line = line.split()
 				if isinstance(line[0][0], int):
 					value['controls'].append(line[0].split('km')[0])
 					value['opens'].append(YEAR + '/' + line[2] + ' ' + line[3])
