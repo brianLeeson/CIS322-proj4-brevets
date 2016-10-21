@@ -6,13 +6,9 @@ from acp_times import *
 import arrow
 import os
 
-# data_base [dist(km), 
-# [[control(km), oTime(min), cTime(min)],...], 
-# ISO_START]
-
 #ISO format: YYYY-MM-DD HH:mm:ss
 ISO_START = '2017-01-01 00:00:00'
-#year is 2016 by default
+#year is 2016 by default. this is a problem if leap year or not
 YEAR = '2016'
 '''
 TEST_DICT =  {filename:{dist: 200, \
@@ -26,38 +22,53 @@ def process():
 	'''
 	arg: none
 	return: None
-	processes everything in the test folder into value dictionary
-	stores value in global TEST_DICT. key is filename.
+	processes everything in the test folder into checkpoints dictionary
+	stores checkpoints in global TEST_DICT. key is filename.
+	
+	NOTES: This function is highly dependent on rusa 
+	not changing their output format.
+	
+	USE: Go to: https://rusa.org/octime_acp.html
+	Use the brevet calculator to calculate and opening and closing time text file.
+	Save file in the tests folder
+	In the command line type 'make test' (only for unix machines)
 	'''
 	
 	for filename in os.listdir("tests"):
-		value = {}
+
+		checkpoints = {}
+		checkpoints['controls'] = []
+		checkpoints['opens'] = []
+		checkpoints['closes'] = []
 		filename = 'tests/' + filename
 		
 		with open(filename, 'r') as f:
+			#skip first 6 lines.
 			for i in range(6):
 				f.readline()
 			read_data = f.readlines()
 
-		#Get the brevet dist. Stores in dict.
-		value['dist'] = read_data[0].split('>')[6].split('km')[0]
-		value['controls'] = []
-		value['opens'] = []
-		value['closes'] = []
+		#Get the brevet dist. Stores in checkpoints dict.
+		checkpoints['dist'] = read_data[0].split('>')[6].split('km')[0]
 		
+		#Skip first 2 lines
 		for i in range(3, len(read_data)):
 			line = read_data[i].strip()
 			#if it has a length and it doesn't start with '<'
 			if (len(line) and (line[0] != '<')):
 				line = line.split()
-				#print(line)
+				#if the first position is a number
 				if (line[0][0].isdigit()):
-					value['controls'].append(line[0].split('km')[0])
-					value['opens'].append(YEAR + '/' + line[2] + ' ' + line[3])
+					#add the control distance
+					checkpoints['controls'].append(line[0].split('km')[0])
+					#add the opening time
+					checkpoints['opens'].append(YEAR + '/' + line[2] + ' ' + line[3])
 				else:
-					value['closes'].append(YEAR + '/' + line[1] + ' ' + line[2])
+					#add the closing time
+					checkpoints['closes'].append(YEAR + '/' + line[1] + ' ' + line[2])
 			
-		TEST_DICT[filename] = value
+		#save in the global dict
+		TEST_DICT[filename] = checkpoints
 		
 		
 def test_web_example1():
@@ -80,19 +91,17 @@ def test_web_files():
 	process()
 	
 	for filename in TEST_DICT:		
-		value = TEST_DICT[filename]
+		checkpoints = TEST_DICT[filename]
 		
 		#for testing
-		print(value)
+		print(checkpoints)
 		
-		dist = value['dist']
-		controls = value['controls']
-		opens = value['opens']
-		closes = value['closes']
+		dist = checkpoints['dist']
+		controls = checkpoints['controls']
+		opens = checkpoints['opens']
+		closes = checkpoints['closes']
 		
 		start_time = opens[0]
-		
-
 		
 		for i in range(1, len(controls)):
 			open = arrow.get(opens[i], 'YYYY/MM/DD HH:mm').isoformat()
@@ -102,5 +111,6 @@ def test_web_files():
 			close = arrow.get(closes[i], 'YYYY/MM/DD HH:mm').isoformat()
 			#assert open_time(dist[i], controls[i], start_time) == close
 			print(open_time(dist, controls[i], start_time) == close)
-			
+
+#run file from command line to print checkpoints			
 test_web_files()

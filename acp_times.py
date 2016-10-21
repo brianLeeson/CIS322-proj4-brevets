@@ -34,9 +34,30 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
        An ISO 8601 format date string indicating the control open time.
        This will be in the same time zone as the brevet start time.
     """
+	brevet_list = [(200,15,34),(400,15,32),(600,15,30),(1000,11.428,28),(1300,13.333,26)]
+	done = false
 	
+	dt = 0
+	i = 0
+	time = 0
+	prev = 0
+	control = control_dist_km
 	
-    return arrow.now().isoformat()
+	While(!done):
+	
+		if (dt + control) <= brevet_list[i][0]:
+			time += control / brevet_list[i][2]
+			done = True
+		else:
+			prev = brevet_list[i][0] - prev
+			time += prev/brevet_list[i][2]
+			i += 1
+			control -+ prev
+			dt += prev
+
+	print('time in hours:', time)
+	
+    return brevet_start_time.replace(hours =+ time).isoformat()
 
 def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
     """
