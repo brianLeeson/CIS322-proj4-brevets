@@ -88,7 +88,7 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 	control = control_dist_km
 	
 	while(not done):
-		if dt < brevet_dist_km:
+		if dt > brevet_dist_km:
 			done = False
 			
 		elif (dt + control) <= B_TABLE[i][0]:
