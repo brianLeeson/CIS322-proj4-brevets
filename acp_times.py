@@ -87,7 +87,7 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 	prev = 0
 	control = control_dist_km
 	
-	while(!done):
+	while(not done):
 		if dt < brevet_dist_km:
 			done = False
 			
