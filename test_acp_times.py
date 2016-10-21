@@ -60,7 +60,7 @@ def process():
 		TEST_DICT[filename] = value
 		
 		
-def test_web_example1(data_base):
+def test_web_example1():
 	#Example 1
 	#just in case
 	assert open_time(60, 200, ISO_START) == '2017-01-01 01:46:00'
