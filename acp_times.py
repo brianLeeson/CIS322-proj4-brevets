@@ -39,6 +39,10 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 	
 	if (brevet_dist_km <= control_dist_km):
 		control_dist_km = brevet_dist_km
+		
+	if ((distance * 1.2) < km):
+		return arrow.get('0000-00-00 00:00:00', 'YYYY-MM-DD HH:mm:ss').isoformat()
+		
 	
 	done = False
 	dt = 0

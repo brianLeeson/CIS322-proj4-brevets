@@ -71,7 +71,6 @@ def _calc_times():
   arrow_time = arrow.get(date_time, 'YYYY-MM-DD HH:mm:ss')
   
   open_time = acp_times.open_time(km, distance, arrow_time.isoformat())
-  print(open_time)
   close_time = acp_times.close_time(km, distance, arrow_time.isoformat())
   result={ "open": open_time, "close": close_time }
   return jsonify(result=result)
