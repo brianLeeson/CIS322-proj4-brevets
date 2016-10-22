@@ -28,7 +28,7 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 	
 	# Check that the control is not more than 120% the brevet
 	if ((brevet_dist_km * 1.2) < control_dist_km):
-		return arrow.get(brevet_start_time, 'YYYY-MM-DD HH:mm').replace(days =- 182).isoformat()
+		return arrow.get(brevet_start_time, 'YYYY-MM-DD HH:mm:ss').replace(days =- 182).isoformat()
 		
 	# Ensure the corrct control dist is used in calculations over the brevet dist
 	if (brevet_dist_km <= control_dist_km):
@@ -58,7 +58,7 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 	hr = time - min
 	min = round(min * 60) 
 	
-	bst = arrow.get(brevet_start_time, 'YYYY-MM-DD HH:mm')
+	bst = arrow.get(brevet_start_time, 'YYYY-MM-DD HH:mm:ss')
 	bst = bst.replace(hours =+ hr)
 	bst = bst.replace(minutes =+ min)
 	
@@ -80,7 +80,7 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 	
 	# Check that the control is not more than 120% the brevet
 	if ((brevet_dist_km * 1.2) < control_dist_km):
-		return arrow.get(brevet_start_time, 'YYYY-MM-DD HH:mm').replace(days =- 182).isoformat()
+		return arrow.get(brevet_start_time, 'YYYY-MM-DD HH:mm:ss').replace(days =- 182).isoformat()
 	
 	# Ensure that closing controls after the brevet dist 
 	# all have the same closing time
@@ -88,7 +88,7 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 		min = MAX_TIME[brevet_dist_km][1]
 		hr = MAX_TIME[brevet_dist_km][0]
 	 
-		bst = arrow.get(brevet_start_time, 'YYYY-MM-DD HH:mm')
+		bst = arrow.get(brevet_start_time, 'YYYY-MM-DD HH:mm:ss')
 		bst = bst.replace(hours =+ hr)
 		bst = bst.replace(minutes =+ min)
 	
@@ -120,7 +120,7 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 	hr = time - min
 	min = round(min * 60)
 	
-	bst = arrow.get(brevet_start_time, 'YYYY-MM-DD HH:mm')
+	bst = arrow.get(brevet_start_time, 'YYYY-MM-DD HH:mm:ss')
 	bst = bst.replace(hours =+ hr)
 	bst = bst.replace(minutes =+ min)
 	
