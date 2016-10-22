@@ -63,8 +63,8 @@ def _calc_times():
   Expects one URL-encoded argument, the number of miles. 
   """
   app.logger.debug("Got a JSON request");
-  km = request.args.get('km', 0, type=int)
-  distance = request.args.get('distance', 0, type=int)
+  km = request.args.get('km', 0, type=float)
+  distance = request.args.get('distance', 0, type=float)
   date = request.args.get('date', 0, type=str)
   time = request.args.get('time', 0, type=str)
   date_time = date + ' ' + time + ':00' 

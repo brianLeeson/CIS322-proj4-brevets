@@ -38,7 +38,7 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 	"""
 	
 	if ((brevet_dist_km * 1.2) < control_dist_km):
-		return arrow.get('0001-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').isoformat()
+		return arrow.get(brevet_start_time).replace(days =- 182).isoformat()
 		
 	if (brevet_dist_km <= control_dist_km):
 		control_dist_km = brevet_dist_km		
@@ -85,6 +85,8 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 	   An ISO 8601 format date string indicating the control close time.
 	   This will be in the same time zone as the brevet start time.
 	"""
+	if ((brevet_dist_km * 1.2) < control_dist_km):
+		return arrow.get(brevet_start_time).replace(days =- 182).isoformat()
 	
 	if (control_dist_km >= brevet_dist_km):
 		min = MAX_TIME[brevet_dist_km][1]
