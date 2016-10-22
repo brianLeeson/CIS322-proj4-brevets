@@ -93,7 +93,7 @@ def test_web_files():
 		checkpoints = TEST_DICT[filename]
 		
 		#for testing
-		print(checkpoints)
+		#print(checkpoints)
 		
 		dist = checkpoints['dist']
 		controls = checkpoints['controls']
@@ -104,11 +104,13 @@ def test_web_files():
 		
 		for i in range(1, len(controls)):
 			open = arrow.get(opens[i], 'YYYY/MM/DD HH:mm').isoformat()
+			print('open')
 			print(open_time(int(dist[i]), int(controls[i]), start_time), '==', open)
 			#assert open_time(int(dist[i]), int(controls[i]), start_time) == open
 			#print(open_time(dist, controls[i], start_time) == open)
 			
 			close = arrow.get(closes[i], 'YYYY/MM/DD HH:mm').isoformat()
+			print('close')
 			print(close_time(int(dist[i]), int(controls[i]), start_time), '==', close)
 			#assert close_time(int(dist[i]), int(controls[i]), start_time) == close
 			#print(close_time(dist, controls[i], start_time) == close)

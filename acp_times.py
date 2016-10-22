@@ -62,7 +62,7 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 			control -= prev
 			dt += prev
 
-	print('time in hours:', time)
+	#print('time in hours:', time)
 	min = time % 1
 	hr = time - min
 	min = round(min * 60) 
@@ -107,9 +107,9 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 	control = control_dist_km
 	
 	while(not done):
-		print('dt', type(dt))
-		print('control', type(control))
-		print('B_TABLE[i][0]', type(B_TABLE[i][0]))
+		#print('dt', type(dt))
+		#print('control', type(control))
+		#print('B_TABLE[i][0]', type(B_TABLE[i][0]))
 		if (dt + control) <= B_TABLE[i][0]:
 			time += control / B_TABLE[i][1]
 			done = True
@@ -120,7 +120,7 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 			control -= prev
 			dt += prev
 
-	print('time in hours:', time)
+	#print('time in hours:', time)
 	min = time % 1
 	hr = time - min
 	min = round(min * 60) 
