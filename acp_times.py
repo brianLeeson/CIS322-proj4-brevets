@@ -56,7 +56,7 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 			time += control / B_TABLE[i][2]
 			done = True
 		else:
-			prev = B_TABLE[i][0] - prev
+			prev = B_TABLE[i][0] - dt
 			time += prev/B_TABLE[i][2]
 			i += 1
 			control -= prev
@@ -114,7 +114,7 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 			time += control / B_TABLE[i][1]
 			done = True
 		else:
-			prev = B_TABLE[i][0] - prev
+			prev = B_TABLE[i][0] - dt
 			time += prev/B_TABLE[i][1]
 			i += 1
 			control -= prev
