@@ -58,7 +58,7 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 	hr = time - min
 	min = round(min * 60) 
 	
-	bst = arrow.get(brevet_start_time, 'YYYY-MM-DD HH:mm:ss')
+	bst = arrow.get(brevet_start_time)
 	bst = bst.replace(hours =+ hr)
 	bst = bst.replace(minutes =+ min)
 	
@@ -120,7 +120,7 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 	hr = time - min
 	min = round(min * 60)
 	
-	bst = arrow.get(brevet_start_time, 'YYYY-MM-DD HH:mm:ss')
+	bst = arrow.get(brevet_start_time)
 	bst = bst.replace(hours =+ hr)
 	bst = bst.replace(minutes =+ min)
 	
