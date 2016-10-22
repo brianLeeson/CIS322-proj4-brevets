@@ -6,12 +6,14 @@ from acp_times import *
 import arrow
 import os
 
-#ISO format: YYYY-MM-DD HH:mm:ss
-ISO_START = '2017-01-01 00:00:00'
-#year is 2016 by default. this is a problem if leap year or not
+# year is 2016 by default. This is a problem if leap year or not
+# FIXME: Automate querying https://rusa.org/octime_acp.html 
+# and processing test from web. Year would then be correct.
 YEAR = '2016'
+
 '''
-TEST_DICT =  {filename:{dist: 200, \
+In the form of:
+TEST_DICT =  {filename:{dist: 200,
 						controls: [1,2, i]
 						opens: [1,2, i]
 						closes: [1,2,i]}}
@@ -27,11 +29,6 @@ def process():
 	
 	NOTES: This function is highly dependent on rusa 
 	not changing their output format.
-	
-	USE: Go to: https://rusa.org/octime_acp.html
-	Use the brevet calculator to calculate and opening and closing time text file.
-	Save file in the tests folder
-	In the command line type 'make test' (only for unix machines)
 	'''
 	
 	for filename in os.listdir("tests"):
@@ -75,22 +72,22 @@ def process():
 		TEST_DICT[filename] = checkpoints
 		
 		
-def test_web_example1():
-	#Example 1
-	#just in case
-	'''
-	assert open_time(60, 200, ISO_START) == '2017-01-01 01:46:00'
-	assert open_time(120, 200, ISO_START) == '2017-01-01 03:32:00'
-	assert open_time(175, 200, ISO_START) == '2017-01-01 05:09:00'
-	assert open_time(205, 200, ISO_START) == '2017-01-01 05:53:00'
-	
-	assert close_time(60, 200, ISO_START) == '2017-01-01 04:00:00'
-	assert close_time(120, 200, ISO_START) == '2017-01-01 08:00:00'
-	assert close_time(175, 200, ISO_START) == '2017-01-01 011:40:00'
-	assert close_time(205, 200, ISO_START) == '2017-01-01 013:30:00'
-	'''
-	
 def test_web_files():
+	'''
+	arg: none
+	return None
+	
+	Function calls process(), which parses files in 'tests' folder into TEST_DICT.
+	Then runs asserts on all entries in TEST_DICT. 
+	
+	USE: Go to: https://rusa.org/octime_acp.html
+	Use the brevet calculator to calculate an opening and closing time text file.
+	Save file as a complete webpage in the tests folder
+
+	In the command line type 'make test' (only for unix machines)
+	'''
+	
+	#process all files in 'test' folder
 	process()
 	
 	for filename in TEST_DICT:		
@@ -108,16 +105,15 @@ def test_web_files():
 		
 		for i in range(1, len(controls)):
 			open = arrow.get(opens[i], 'YYYY-MM-DD HH:mm').isoformat()
-			print('open')
+			print('open results:')
 			print(open_time(int(controls[i]), int(dist), start_time), '==', open)
 			assert open_time(int(controls[i]), int(dist), start_time) == open
-			#print(open_time(int(controls[i]), int(dist), start_time) == open)
 			
 			close = arrow.get(closes[i], 'YYYY-MM-DD HH:mm').isoformat()
-			print('close')
+			print('close results:')
 			print(close_time(int(controls[i]), int(dist), start_time), '==', close)
 			assert close_time(int(controls[i]), int(dist), start_time) == close
-			#print(close_time(int(controls[i]), int(dist), start_time) == close)
 
-#run file from command line to print checkpoints			
+#run file from command line to print checkpoints 
+#and print the conditional statement for debugging.			
 test_web_files()

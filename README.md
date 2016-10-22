@@ -1,48 +1,42 @@
 # Project 4:  Brevet time calculator with Ajax
+Reimplement the RUSA ACP control time calculator with flask and ajax
+AUTHOR: Brian Leeson, bel@cs.uoregon.edu
 
-Reimplement the RUSA ACP controle time calculator with flask and ajax
+## Overview ACP controle times
 
-## ACP controle times
-
-That's "controle" with an 'e', because it's French, although "control"
-is also accepted.  Controls are points where   
-a rider must obtain proof of passage, and control[e] times are the
-minimum and maximum times by which the rider must  
-arrive at the location.   
+Controls are points where a rider must obtain proof of passage,
+and control times are the minimum and maximum times by which the 
+rider must arrive at the location.   
 
 The algorithm for calculating controle times is described at
-https://rusa.org/octime_alg.html . The description is ambiguous,
-but the examples help.  Part of finishing this project is clarifying
-anything that is not clear about the requirements, and documenting it
-clearly.  
+https://rusa.org/octime_alg.html.
 
 We are essentially replacing the calculator at
-https://rusa.org/octime_acp.html .  We can also use that calculator
-to clarify requirements and develop test data.  
+https://rusa.org/octime_acp.html.
 
-## AJAX and Flask reimplementation
+## RUNNING THE APPLICATION
+Do NOT enter the virtual enviroment.
 
-The current RUSA controle time calculator is a Perl script that takes
-an HTML form and emits a text page. The reimplementation will fill in
-times as the input fields are filled.  Each time a distance is filled
-in, the corresponding open and close times should be filled in.   
+Deployment should work "out of the box" with this command sequence:
+	sudo apt-get install python3-venv
+	git clone <gitURL>
+	cd to the cloned repository
+	make configure
+	make run
 
-I will leave much of the design to you.   
+The default port is 5000. If your are on your own machine connect at localhost:5000. 
+If the server is running another machine connect at <OtherMachineIP>:5000.
+ 
+## TESTING THE APPLICAITON
+Test this server by following the RUNNING instructions and attempt to connect to the server.
+From there you may enter values in the Km or Miles fields to calulate the controls.
 
-## Testing
+To run automated tests:
+	make test
 
-A suite of nose test cases is a requirement of this project.  Design
-the test cases based on an interpretation of rules at
-https://rusa.org/octime_alg.html .  Be sure to test your test
-cases:  You can use the current brevet time calculator (
-https://rusa.org/octime_acp.html ) to check that your expected test
-outputs are correct. While checking these values once is a manual
-operation, re-running your test cases should be automated in the usual
-manner as a Nose test suite.
+To add your own test cases:
+	Go to: https://rusa.org/octime_acp.html
+	Use the brevet calculator to calculate an opening and closing time text file.
+	Save file as a complete webpage in the tests folder
 
-To make automated testing more practical, your open and close time
-calculations should be in a separate module.  Because I want to be 
-able to use my test suite as well as yours, I will require that 
-module be named acp_times.py and contain the two functions I have 
-included in the skeleton code (though revised, of course, to 
-return correct results). 
+
