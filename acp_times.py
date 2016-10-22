@@ -37,12 +37,11 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 	   This will be in the same time zone as the brevet start time.
 	"""
 	
-	if (brevet_dist_km <= control_dist_km):
-		control_dist_km = brevet_dist_km
-		
 	if ((brevet_dist_km * 1.2) < control_dist_km):
-		return arrow.get('0000-00-00 00:00:00', 'YYYY-MM-DD HH:mm:ss').isoformat()
+		return arrow.get('0001-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').isoformat()
 		
+	if (brevet_dist_km <= control_dist_km):
+		control_dist_km = brevet_dist_km		
 	
 	done = False
 	dt = 0
