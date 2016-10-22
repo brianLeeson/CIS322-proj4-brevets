@@ -113,7 +113,7 @@ def test_web_files():
 			print('close')
 			print(close_time(int(controls[i]), int(dist), start_time), '==', close)
 			#assert close_time(int(dist), int(controls[i]), start_time) == close
-			print(lose_time(int(controls[i]), int(dist), start_time) == close)
+			print(close_time(int(controls[i]), int(dist), start_time) == close)
 
 #run file from command line to print checkpoints			
 test_web_files()
