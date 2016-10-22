@@ -85,7 +85,6 @@ def test_web_example1():
 	assert close_time(175, 200, ISO_START) == '2017-01-01 011:40:00'
 	assert close_time(205, 200, ISO_START) == '2017-01-01 013:30:00'
 	'''
-
 	
 def test_web_files():
 	process()
@@ -105,12 +104,13 @@ def test_web_files():
 		
 		for i in range(1, len(controls)):
 			open = arrow.get(opens[i], 'YYYY/MM/DD HH:mm').isoformat()
-			assert open_time(dist[i], controls[i], start_time) == open
-			print(open_time(dist, controls[i], start_time) == open)
+			print('dist:', int(dist[i]), 'controls:', int(controls[i]), 'start_time:', start_time)
+			assert open_time(int(dist[i]), int(controls[i]), start_time) == open
+			#print(open_time(dist, controls[i], start_time) == open)
 			
 			close = arrow.get(closes[i], 'YYYY/MM/DD HH:mm').isoformat()
-			#assert open_time(dist[i], controls[i], start_time) == close
-			print(open_time(dist, controls[i], start_time) == close)
+			assert open_time(int(dist[i]), int(controls[i]), start_time) == close
+			#print(open_time(dist, controls[i], start_time) == close)
 
 #run file from command line to print checkpoints			
 test_web_files()
