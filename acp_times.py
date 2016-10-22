@@ -38,7 +38,7 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 	"""
 	
 	if ((brevet_dist_km * 1.2) < control_dist_km):
-		return arrow.get(brevet_start_time, 'YYYY/MM/DD HH:mm').replace(days =- 182).isoformat()
+		return arrow.get(brevet_start_time, 'YYYY-MM-DD HH:mm').replace(days =- 182).isoformat()
 		
 	if (brevet_dist_km <= control_dist_km):
 		control_dist_km = brevet_dist_km		
@@ -66,7 +66,7 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 	min = time % 1
 	hr = time - min
 	min = round(min * 60) 
-	bst = arrow.get(brevet_start_time, 'YYYY/MM/DD HH:mm')
+	bst = arrow.get(brevet_start_time, 'YYYY-MM-DD HH:mm')
 	bst = bst.replace(hours =+ hr)
 	bst = bst.replace(minutes =+ min)
 	
@@ -86,13 +86,13 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 	   This will be in the same time zone as the brevet start time.
 	"""
 	if ((brevet_dist_km * 1.2) < control_dist_km):
-		return arrow.get(brevet_start_time, 'YYYY/MM/DD HH:mm').replace(days =- 182).isoformat()
+		return arrow.get(brevet_start_time, 'YYYY-MM-DD HH:mm').replace(days =- 182).isoformat()
 	
 	if (control_dist_km >= brevet_dist_km):
 		min = MAX_TIME[brevet_dist_km][1]
 		hr = MAX_TIME[brevet_dist_km][0]
 	 
-		bst = arrow.get(brevet_start_time, 'YYYY/MM/DD HH:mm')
+		bst = arrow.get(brevet_start_time, 'YYYY-MM-DD HH:mm')
 		bst = bst.replace(hours =+ hr)
 		bst = bst.replace(minutes =+ min)
 	
@@ -124,7 +124,7 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 	min = time % 1
 	hr = time - min
 	min = round(min * 60) 
-	bst = arrow.get(brevet_start_time, 'YYYY/MM/DD HH:mm')
+	bst = arrow.get(brevet_start_time, 'YYYY-MM-DD HH:mm')
 	bst = bst.replace(hours =+ hr)
 	bst = bst.replace(minutes =+ min)
 	
