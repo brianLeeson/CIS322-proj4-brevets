@@ -62,10 +62,14 @@ def process():
 					#add the control distance
 					checkpoints['controls'].append(line[0].split('km')[0])
 					#add the opening time
-					checkpoints['opens'].append(YEAR + '-' + line[2] + ' ' + line[3])
+					mmdd = line[2].split('/')
+					mmdd_slash = mmdd[0] + '-' + mmdd[1]
+					checkpoints['opens'].append(YEAR + '-' + mmdd_slash + ' ' + line[3])
 				else:
 					#add the closing time
-					checkpoints['closes'].append(YEAR + '-' + line[1] + ' ' + line[2])
+					mmdd = line[1].split('/')
+					mmdd_slash = mmdd[0] + '-' + mmdd[1]
+					checkpoints['closes'].append(YEAR + '-' + mmdd_slash + ' ' + line[2])
 			
 		#save in the global dict
 		TEST_DICT[filename] = checkpoints
