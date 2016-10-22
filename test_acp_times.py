@@ -93,7 +93,7 @@ def test_web_files():
 		checkpoints = TEST_DICT[filename]
 		
 		#for testing
-		#print(checkpoints)
+		print(checkpoints)
 		
 		dist = checkpoints['dist']
 		controls = checkpoints['controls']
