@@ -18,11 +18,11 @@ https://rusa.org/octime_acp.html.
 Do NOT enter the virtual enviroment.
 
 Deployment should work "out of the box" with this command sequence:
-	sudo apt-get install python3-venv
-	git clone <gitURL>
-	cd to the cloned repository
-	make configure
-	make run
+sudo apt-get install python3-venv  
+git clone <gitURL>  
+cd to the cloned repository  
+make configure  
+make run  
 
 The default port is 5000. If your are on your own machine connect at localhost:5000. 
 If the server is running another machine connect at <OtherMachineIP>:5000.
